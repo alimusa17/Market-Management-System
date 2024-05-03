@@ -46,7 +46,8 @@ namespace WebApp.Controllers
             {
                 Product = ProductsRepository.GetProductById(id)??new Product(),
                 Categories = CategoriesRepository.GetCategories()
-            };            
+            };
+            
             return View(productViewModel);
         }
 
@@ -70,5 +71,11 @@ namespace WebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult ProductsByCategoryPartial(int categoryId)
+        {
+            var products = ProductsRepository.GetProductsByCategoryId(categoryId);
+
+            return PartialView("_Products", products);
+        }
     }
 }
