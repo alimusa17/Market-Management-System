@@ -12,7 +12,7 @@ namespace WebApp.Controllers
             return View(products);
         }
 
-        public IActionResult Add() 
+        public IActionResult Add()
         {
             ViewBag.Action = "add";
 
@@ -29,7 +29,7 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProductsRepository.AddProduct(productViewModel.Product);
+                ProductsRepository.AddProduct(productViewModel.Product);                
                 return RedirectToAction(nameof(Index));
             }
 
@@ -47,7 +47,7 @@ namespace WebApp.Controllers
                 Product = ProductsRepository.GetProductById(id)??new Product(),
                 Categories = CategoriesRepository.GetCategories()
             };
-            
+
             return View(productViewModel);
         }
 

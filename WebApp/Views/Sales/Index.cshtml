@@ -1,13 +1,13 @@
 ﻿@model SalesViewModel
 
-@section title{
+@section title {
     <div class="row">
         <div class="col-7"><h3>Cashier's Console</h3></div>
         <div class="col-2"><label for="cashier">Cashier Name:</label></div>
         <div class="col-3">
-            @* Display Cashier's name *@
+            @* Display Cashier's name here *@
         </div>
-    </div>
+    </div>    
 }
 
 <br />
@@ -33,21 +33,23 @@
         <div id="productDetailPartial">
             @* Product Details *@
         </div>
-            @* Sales form *@
-            <form method="post" asp-controller="sales" asp-action="sell" id="formSale">
-                <input asp-for="SelectedProductId" type="hidden" />
-                <div class="form-group">
-                    <label asp-for="QuantityToSell"></label>
-                    <input asp-for="QuantityToSell" class="form-control" type="number" min="1" />
-                </div>
-                <br />
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Submit" />
-                </div>
-            </form>
+        @* Sales form *@
+        <form method="post" asp-controller="sales" asp-action="sell" id="formSale">
+            <input asp-for="SelectedProductId" type="hidden" />
+            <div class="form-group">
+                <label asp-for="QuantityToSell"></label>
+                <input asp-for="QuantityToSell" class="form-control" type="number" min="1" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </form>
     </div>
     <div class="col">
         @* List of transactions *@
+
+        @await Component.InvokeAsync("Transactions", "Cashier1")
     </div>
 </div>
 
@@ -79,7 +81,7 @@
                 // Get the product ID from the "product-id" attribute of the clicked row
                 var productId = $(this).attr('product-id');
 
-                // Load the details of the product in a partial view
+                // Load the details of the product in a partial view                
                 $("#productDetailPartial").load("/sales/SellProductPartial", { productId: productId});
 
                 if (productId > 0) {
@@ -99,5 +101,5 @@
             $("#productDetailPartial").html("");
             $("#formSale").hide();
         }
-    </script>
+    </script>    
 }

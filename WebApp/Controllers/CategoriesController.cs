@@ -11,7 +11,7 @@ namespace WebApp.Controllers
             return View(categories);
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int? id) 
         {
             ViewBag.Action = "edit";
 

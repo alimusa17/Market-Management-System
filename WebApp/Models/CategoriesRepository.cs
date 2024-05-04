@@ -29,13 +29,13 @@
         public static Category? GetCategoryById(int categoryId)
         {
             var category = _categories.FirstOrDefault(x => x.CategoryId == categoryId);
-            if (category != null)
-            {
+            if (category != null) 
+            { 
                 return new Category
                 {
                     CategoryId = category.CategoryId,
                     Name = category.Name,
-                    Description = category.Description,
+                    Description = category.Description,                    
                 };
             }
 

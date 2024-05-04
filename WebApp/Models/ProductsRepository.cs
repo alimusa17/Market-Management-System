@@ -97,7 +97,7 @@
 
         public static List<Product> GetProductsByCategoryId(int categoryId)
         {
-            var products = _products.Where(x =>  x.CategoryId == categoryId);
+            var products = _products.Where(x => x.CategoryId == categoryId);
             if (products != null)
                 return products.ToList();
             else
